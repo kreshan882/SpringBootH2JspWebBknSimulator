@@ -113,9 +113,15 @@ public class LoginService{
                     
                     PageBean page2 = new PageBean();
                     page2.setPAGE_ID("0102");
-                    page2.setPAGE_NAME("Generate Eod");
-                    page2.setPAGE_URL("eodLoad");
+                    page2.setPAGE_NAME("Transaction Modifi");
+                    page2.setPAGE_URL("trxnModi");
                     pageList.add(page2);
+                    
+                    PageBean page3 = new PageBean();
+                    page3.setPAGE_ID("0103");
+                    page3.setPAGE_NAME("Generate Eod");
+                    page3.setPAGE_URL("eodLoad");
+                    pageList.add(page3);
                     
                     modulePageList.put(module, pageList);
                     

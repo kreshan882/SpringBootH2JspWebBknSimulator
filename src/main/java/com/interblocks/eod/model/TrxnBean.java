@@ -72,10 +72,10 @@ public class TrxnBean {
 //    private String confirmPassword;
 //
 //
-//    private String userProfileDesc;
-//    private String applicationProfileDesc;
-//    private String upUserID;
-//    private String updated;
+    private String uptrxn_number;
+    private String upaccount_no;
+    private String upcrd_no;
+    private String upprod_typ;
     
     
     private int deleteSucsess;
@@ -90,6 +90,38 @@ public class TrxnBean {
 //	public void setId(int id) {
 //		this.id = id;
 //	}
+
+	public String getUptrxn_number() {
+		return uptrxn_number;
+	}
+
+	public void setUptrxn_number(String uptrxn_number) {
+		this.uptrxn_number = uptrxn_number;
+	}
+
+	public String getUpaccount_no() {
+		return upaccount_no;
+	}
+
+	public void setUpaccount_no(String upaccount_no) {
+		this.upaccount_no = upaccount_no;
+	}
+
+	public String getUpcrd_no() {
+		return upcrd_no;
+	}
+
+	public void setUpcrd_no(String upcrd_no) {
+		this.upcrd_no = upcrd_no;
+	}
+
+	public String getUpprod_typ() {
+		return upprod_typ;
+	}
+
+	public void setUpprod_typ(String upprod_typ) {
+		this.upprod_typ = upprod_typ;
+	}
 
 	public String getDeleteMessage() {
         return deleteMessage;

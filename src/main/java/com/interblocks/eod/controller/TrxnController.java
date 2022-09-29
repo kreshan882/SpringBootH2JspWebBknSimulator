@@ -146,6 +146,44 @@ public class TrxnController implements AccessControlService {
         return trxnBean;
     }
     
+    @RequestMapping(value="/FindTxans",method= RequestMethod.POST)
+    public @ResponseBody TrxnBean ModifyFindTrans(@RequestParam String trxn_number) {
+    	TrxnBean trxnBean = new TrxnBean();
+        try{
+            System.out.println("User Find !!!>>"+trxn_number);
+            trxnBean= trxnService.getUserDetails(trxn_number);
+            System.out.println("res1:"+trxnBean.getBank_code());
+            System.out.println("res2:"+trxnBean.getTrxn_number());
+            //trxnBean.setDeleteSucsess(1);
+            //trxnBean.setDeleteMessage("transaction Deleted Sucsessfully");
+        }catch(Exception e){
+            e.printStackTrace();
+            LogFileCreator.writeErrorToLog(e);
+
+        }
+        return trxnBean;
+    }
+    
+    @RequestMapping(value="/trxnUpdate",method= RequestMethod.POST)
+    public @ResponseBody TrxnBean UpdateTrans(@RequestParam TrxnBean txnBean) {
+    	TrxnBean trxnBean = new TrxnBean();
+        try{
+            System.out.println("User up 11>>"+txnBean.getUptrxn_number());
+            System.out.println("User up 12>>"+txnBean.getUpaccount_no());
+            System.out.println("User up 13>>"+txnBean.getUpcrd_no());
+            System.out.println("User up 14>>"+txnBean.getUpprod_typ());
+            //int res= trxnService.updateTransaction(trxnBean,trxn_number);
+            //System.out.println("res:"+res);
+            trxnBean.setDeleteSucsess(1);
+            trxnBean.setDeleteMessage("transaction Update Sucsessfully");
+        }catch(Exception e){
+            e.printStackTrace();
+            LogFileCreator.writeErrorToLog(e);
+            trxnBean.setDeleteSucsess(0);
+            trxnBean.setDeleteMessage("Transaction Update fail");
+        }
+        return trxnBean;
+    }
     
     private void getDropdownValues(Model model) {
             try{

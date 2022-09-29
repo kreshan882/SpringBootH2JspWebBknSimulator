@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
@@ -100,6 +101,33 @@ public class TrxnService {
             });
     
     }
+    
+//    public TrxnBean getUserDetails(String id) {
+//
+//        String sql = "SELECT * FROM BKN_DX_TRXN_REC where TRXN_NUMBER = ?";
+//
+//        return (TrxnBean) jdbcTemplate.queryForObject(
+//    			sql, 
+//    			new Object[]{id}, 
+//    			new BeanPropertyRowMapper(TrxnBean.class));
+//
+//    }
+
+
+
+
+	public TrxnBean getUserDetails(String trxn_number) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM BKN_DX_TRXN_REC where TRXN_NUMBER = ?";
+
+        return (TrxnBean) jdbcTemplate.queryForObject(
+    			sql, 
+    			new Object[]{trxn_number}, 
+    			new BeanPropertyRowMapper(TrxnBean.class));
+		//return null;
+	}
+    
+   
 //
 //    public boolean addNewUser(TrxnBean user) throws Exception {
 //    	
@@ -151,76 +179,77 @@ public class TrxnService {
 ////    }
 ////    
 //    
-////    public void getUserDetails(TrxnBean user, String userid) throws Exception{
-//////        Connection con = null;
-//////        PreparedStatement ps = null;
-//////        ResultSet rs = null;
-//////        try{
-//////            String sql = "SELECT * FROM ECSSS_USER WHERE USER_ID = ?"; 
-//////            con = dataSource.getConnection();
-//////            ps = con.prepareStatement(sql);
-//////            ps.setString(1, userid);
-//////            rs = ps.executeQuery();
-//////            while (rs.next()) {
-//////                user.setUpUserID(userid);
-//////                user.setUserID(rs.getString("USER_ID"));
-//////                user.setName(rs.getString("NAME"));
-//////                user.setMobileNo(rs.getString("MOBILE"));
-//////                user.setEmail(rs.getString("EMAIL"));
-//////                user.setUserProfile(rs.getInt("USER_PROFILE"));
-//////                user.setApplicationProfile(rs.getInt("APP_PROFILE_ID"));
-//////                user.setActivationMethod(rs.getString("ACTIVATION_METHOD"));
-//////                user.setAuthMethod(rs.getString("AUTH_METHOD"));
-//////                user.setStatus(rs.getString("STATUS"));
-//////            }
-//////
-//////        }catch(Exception e){
-//////            throw  e;
-//////        }finally{
-//////            if(rs!=null){
-//////                rs.close();
-//////            }if(ps!=null){
-//////                ps.close();
-//////            }if(con!=null){
-//////                con.close();
-//////            }
-//////        }
-////    }
-////    
-////    public boolean updateUser(TrxnBean user) throws Exception{
-////        Connection con = null;
-////        PreparedStatement ps = null;
-////        boolean update = false;
-//////        try{
-//////            
-//////            String sql = "UPDATE ECSSS_USER SET NAME=?,MOBILE=?,EMAIL=?,USER_PROFILE=?,APP_PROFILE_ID=?,ACTIVATION_METHOD=?,AUTH_METHOD=?,STATUS=? WHERE USER_ID=?"; 
-//////            
-//////            con = dataSource.getConnection();
-//////            ps = con.prepareStatement(sql);
-//////            ps.setString(1, user.getName());
-//////            ps.setString(2, user.getMobileNo());
-//////            ps.setString(3, user.getEmail());
-//////            ps.setInt(4, user.getUserProfile());
-//////            ps.setInt(5, user.getApplicationProfile());
-//////            ps.setString(6, user.getActivationMethod());
-//////            ps.setString(7, user.getAuthMethod());
-//////            ps.setString(8, user.getStatus());
-//////            ps.setString(9, user.getUpUserID());
-//////            
-//////            if(ps.executeUpdate()==1){
-//////                update = true;
-//////            }
-//////        }catch(Exception e){
-//////            throw  e;
-//////        }finally{
-//////            if(ps!=null){
-//////                ps.close();
-//////            }if(con!=null){
-//////                con.close();
-//////            }
-//////        }
-////        return update;
-////    }
+//    public void getUserDetails(TrxnBean user, String userid) throws Exception{
+//        Connection con = null;
+//        PreparedStatement ps = null;
+//        ResultSet rs = null;
+//        try{
+//            String sql = "SELECT * FROM ECSSS_USER WHERE USER_ID = ?"; 
+//            con = dataSource.getConnection();
+//            ps = con.prepareStatement(sql);
+//            ps.setString(1, userid);
+//            rs = ps.executeQuery();
+//            while (rs.next()) {
+//                user.setUpUserID(userid);
+//                user.setUserID(rs.getString("USER_ID"));
+//                user.setName(rs.getString("NAME"));
+//                user.setMobileNo(rs.getString("MOBILE"));
+//                user.setEmail(rs.getString("EMAIL"));
+//                user.setUserProfile(rs.getInt("USER_PROFILE"));
+//                user.setApplicationProfile(rs.getInt("APP_PROFILE_ID"));
+//                user.setActivationMethod(rs.getString("ACTIVATION_METHOD"));
+//                user.setAuthMethod(rs.getString("AUTH_METHOD"));
+//                user.setStatus(rs.getString("STATUS"));
+//            }
+//
+//        }catch(Exception e){
+//            throw  e;
+//        }finally{
+//            if(rs!=null){
+//                rs.close();
+//            }if(ps!=null){
+//                ps.close();
+//            }if(con!=null){
+//                con.close();
+//            }
+//        }
+//    }
+    
+//    public boolean updateUser(TrxnBean user) throws Exception{
+//        Connection con = null;
+//        PreparedStatement ps = null;
+//        boolean update = false;
+//        try{
+//            
+//            String sql = "UPDATE ECSSS_USER SET NAME=?,MOBILE=?,EMAIL=?,USER_PROFILE=?,APP_PROFILE_ID=?,ACTIVATION_METHOD=?,AUTH_METHOD=?,STATUS=? WHERE USER_ID=?"; 
+//            
+//            con = dataSource.getConnection();
+//            ps = con.prepareStatement(sql);
+//            ps.setString(1, user.getName());
+//            ps.setString(2, user.getMobileNo());
+//            ps.setString(3, user.getEmail());
+//            ps.setInt(4, user.getUserProfile());
+//            ps.setInt(5, user.getApplicationProfile());
+//            ps.setString(6, user.getActivationMethod());
+//            ps.setString(7, user.getAuthMethod());
+//            ps.setString(8, user.getStatus());
+//            ps.setString(9, user.getUpUserID());
+//            
+//            if(ps.executeUpdate()==1){
+//                update = true;
+//            }
+//        }catch(Exception e){
+//            throw  e;
+//        }finally{
+//            if(ps!=null){
+//                ps.close();
+//            }if(con!=null){
+//                con.close();
+//            }
+//        }
+//        return update;
+//    }
+    
 ////    
 ////     public void deleteUser(TrxnBean user,String userid) throws Exception{
 //////        Connection con = null;

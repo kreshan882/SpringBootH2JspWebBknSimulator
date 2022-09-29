@@ -29,6 +29,7 @@ public class TestBknSimulatorApplication implements ServletContextListener{
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {     
+    		System.out.println("Build : 29/09/2022");   
             System.out.println("Global variable initialized .....");      
     }
 

@@ -24,6 +24,7 @@
 //            function resetData(){
 //                $('#userAdd').trigger("reset");
 //            }
+             
                     
 		function confirmDelete(keyval,keyval2) {
                 $("#dialog-confirm").html('<br><b><font size="3" color="red"><center>Please confirm to delete transaction : ' + keyval2 + ' ');
@@ -77,6 +78,33 @@
                 }
             });
         }
+        
+        function editUser(keyval) {
+                alert('ddd');
+                $('#divmsg').empty();
+                $.ajax({
+                    url: '${pageContext.request.contextPath}/FindTxans',
+                    data: {trxn_number: keyval},
+                    dataType: "json",
+                    type: "POST",
+                    success: function (data) {
+                        $('#userEdit').show();
+                        $('#userAdd').hide();
+                       // $('#upusernamecopy').val(data.upusernamecopy);
+                       // $('#upusername').val(data.upusername);
+                       // $('#upusername').attr('readOnly', true).val();
+                        
+                      $('#uptrxn_number').val(data.trxn_number);
+                      $('#upaccount_no').val(data.account_no);
+                      $('#upcrd_no').val(data.crd_no);
+                      $('#upprod_typ').val(data.prod_typ);
+                  
+                    },
+                    error: function (data) {
+                        window.location = "${pageContext.request.contextPath}/LogoutloginCall.blb?";
+                    }
+                });
+            }
         </script>
     </head>
     <body style="overflow:hidden">
@@ -186,6 +214,53 @@
                                     </tr>
                                  </table>
                             </form:form>
+                            <spring:url value="/trxnUpdate" var="userEditActionUrl" />
+
+                            <form:form id="userEdit"  class="form-horizontal" method="post" modelAttribute="userForm" action="${userEditActionUrl}" cssStyle="display:none">
+
+                                <table class="form_table" border="0px">
+                                <form:hidden path="uptrxn_number" type="text" cssClass="textField"
+                                id="uptrxn_number" name="uptrxn_number" cssStyle="display:none" />
+                                
+                                    <tr>
+                                        <td class="content_td formLable">Account Number<span class="mandatory">*</span></td>
+                                        <td class="content_td formLable">:</td>
+                                        <td><form:input path="upaccount_no" type="text" cssClass="textField"
+                                                id="upaccount_no" name="upaccount_no"  />
+                                        </td>
+                                        <td class="content_td formLable">Card Number<span class="mandatory">*</span></td>
+                                        <td class="content_td formLable">:</td>
+                                        <td><form:input path="upcrd_no" type="text" cssClass="textField"
+                                                id="upcrd_no" name="upcrd_no"  />
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td class="content_td formLable">Product Type<span class="mandatory">*</span></td>
+                                        <td class="content_td formLable">:</td>
+                                        <td><form:select path="upprod_typ" class="textField" id="upprod_typ">
+                                                <form:option value="0" label="--- Select ---" />
+                                                <form:options items="${prodTypeList}" />
+                                            </form:select>
+                                        </td>
+                                        
+                                    </tr>
+
+                                     
+                                    <tr>
+                                        <td></td> 
+                                    </tr>
+                                    <tr>
+                                    <td align="left" colspan="7">
+                                    	<button type="reset" class="button_reset">Reset
+                                        </button>
+                                        <button type="submit" class="button_ssave">Modifi Transaction
+                                        </button>
+                                        
+                                    </td>
+                                    </tr>
+                                 </table>
+                            </form:form>
 
                         </div>
                          <%--load table--%>
@@ -205,7 +280,8 @@
                                         <th data-class="expand" class="tbl_heading">Currency code</th>
                                         <th data-class="expand" class="tbl_heading">Trxn type</th>
                                         <th data-class="expand" class="tbl_heading">Product type</th>
-
+										
+										<th data-class="expand" class="tbl_heading">Modify</th>
                                         <th data-class="expand" class="tbl_heading">Delete</th>
                                     </tr>
                                 </thead>
@@ -225,7 +301,7 @@
                                             <td>${trxnlist.trxn_typ}</td>
                                             <td>${trxnlist.prod_typ}</td>
 
-                                            <%-- <td style="text-align: center;"><a href='#' onclick='editUser("${trxn_number}");'><img src ='${pageContext.request.contextPath}/resources/images/iconEdit.png' /></a></td> --%>
+                                            <td style="text-align: center;"><a href='#' onclick='editUser("${trxn_number}");'><img src ='${pageContext.request.contextPath}/resources/images/iconEdit.png' /></a></td> 
                                             <td style="text-align: center;"><button onclick='confirmDelete("${trxn_number}","${crd_no}");'><img src ='${pageContext.request.contextPath}/resources/images/iconDelete.png' /></button></td>
                                         </tr>
                                     </c:forEach>
