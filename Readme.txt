@@ -13,9 +13,9 @@ Creact repository get url{https://github.com/kreshan882/SpringBootH2JspWebBknSim
 	upload Git BAST commant font
 	================================
 	git config --global user.email "kreshan882@gmail.com"
-	cd TestBknSimulatorH2SpringBoot/
+	cd SpringBootH2JspWebBknSimulator/
 	git init
-	git add src/* (git add --all)
+	git add src/* pom.xml mvnw* mvnw.cmd Readme.txt LOG4J/* 
 	git status  ==> check status 
 	git commit -m "commit fst"
 	git log
