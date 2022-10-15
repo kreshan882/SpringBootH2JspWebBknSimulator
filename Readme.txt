@@ -2,9 +2,12 @@ git
 Git-2.36.1-64-bit
 Creact repository get url{https://github.com/kreshan882/SpringBootH2JspWebBknSimulator.git}
 1) git Gui
-	>[git config --global user.email "kreshan882@gmail.com"]
-	clone exesit repository [ URL  +  LocalPath/newFolder + clone]
-	git clone url
+   ======================================
+   get file from Git BAST commant font
+   ======================================
+	git config --global user.email "kreshan882@gmail.com"
+	cd D://PROJECTS//ECLIPES_K//PERSONAL_SPRINGBOOT//
+	git clone https://github.com/kreshan882/SpringBootH2JspWebBknSimulator.git
 	
 	================================
 	upload Git BAST commant font
@@ -35,7 +38,7 @@ OPEN JSP design===>
 	application.properties
 	banner.txt
 	data.sql -> loaded this sql automatically
-2) Run As-> Mvn Build
+2) Run As-> Mvn Build -> clean package
 3) RunAs -> Spring Boot App
 4) H2 Database ===> http://localhost:8888/h2/
 		Generic H2 (Embedded)
@@ -47,8 +50,11 @@ OPEN JSP design===>
 		Add + Delete
 		Modify ???
 		
-		
+5) jsp bug fix
+  5.1) RUN-> %TEMP%
+       C:\Users\kreshan.r\AppData\Local\Temp\tomcat.3990816478800102839.8888\work\Tomcat\localhost\ROOT\org\apache\jsp
 
+  5.2) put jsp comment proporly
 		
 		
 

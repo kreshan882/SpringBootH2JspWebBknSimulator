@@ -9,7 +9,7 @@ import com.interblocks.eod.model.TrxnBean;
 import com.interblocks.eod.service.LoginService;
 import com.interblocks.eod.service.TrxnService;
 import com.interblocks.eod.util.AccessControlService;
-import com.interblocks.eod.util.LogFileCreator;
+//import com.interblocks.eod.util.LogFileCreator;
 import com.interblocks.eod.util.PageVarList;
 import com.interblocks.eod.util.Util;
 import com.interblocks.eod.util.validator.UserFormValidator;
@@ -75,10 +75,12 @@ public class TrxnController implements AccessControlService {
                 System.out.println("Transaction Loaded, call page");
             }catch(Exception e){
                 e.printStackTrace();
-                LogFileCreator.writeErrorToLog(e);
+                System.out.println("log write testingg.......");
+                //LogFileCreator.writeErrorToLog(e);
             }
 
             return "pages/user/trxnAdd.jsp";
+            
 
     }
 
@@ -121,7 +123,7 @@ public class TrxnController implements AccessControlService {
                 
             }catch(Exception e){
                 e.printStackTrace();
-                LogFileCreator.writeErrorToLog(e);
+                //LogFileCreator.writeErrorToLog(e);
                 model.addAttribute("error", "error on user add");
             }
             
@@ -139,7 +141,7 @@ public class TrxnController implements AccessControlService {
             trxnBean.setDeleteMessage("transaction Deleted Sucsessfully");
         }catch(Exception e){
             e.printStackTrace();
-            LogFileCreator.writeErrorToLog(e);
+            //LogFileCreator.writeErrorToLog(e);
             trxnBean.setDeleteSucsess(0);
             trxnBean.setDeleteMessage("Transaction Deleted fail");
         }
@@ -158,7 +160,7 @@ public class TrxnController implements AccessControlService {
             //trxnBean.setDeleteMessage("transaction Deleted Sucsessfully");
         }catch(Exception e){
             e.printStackTrace();
-            LogFileCreator.writeErrorToLog(e);
+            //LogFileCreator.writeErrorToLog(e);
 
         }
         return trxnBean;
@@ -178,7 +180,7 @@ public class TrxnController implements AccessControlService {
             trxnBean.setDeleteMessage("transaction Update Sucsessfully");
         }catch(Exception e){
             e.printStackTrace();
-            LogFileCreator.writeErrorToLog(e);
+            //LogFileCreator.writeErrorToLog(e);
             trxnBean.setDeleteSucsess(0);
             trxnBean.setDeleteMessage("Transaction Update fail");
         }
@@ -199,7 +201,7 @@ public class TrxnController implements AccessControlService {
                 
             }catch(Exception e){
                 e.printStackTrace();
-                LogFileCreator.writeErrorToLog(e);
+                //LogFileCreator.writeErrorToLog(e);
             }
            
 	}

@@ -214,7 +214,7 @@
                                     </tr>
                                  </table>
                             </form:form>
-                            <spring:url value="/trxnUpdate" var="userEditActionUrl" />
+      <%--                      <spring:url value="/trxnUpdate" var="userEditActionUrl" />
 
                             <form:form id="userEdit"  class="form-horizontal" method="post" modelAttribute="userForm" action="${userEditActionUrl}" cssStyle="display:none">
 
@@ -261,7 +261,7 @@
                                     </tr>
                                  </table>
                             </form:form>
-
+--%>
                         </div>
                          <%--load table--%>
                             <div id="dialog-confirm"></div>
