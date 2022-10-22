@@ -81,9 +81,34 @@ public class TrxnController implements AccessControlService {
 
             return "pages/user/trxnAdd.jsp";
             
-
     }
 
+    @RequestMapping(value="/trxnModi",method= RequestMethod.GET)
+	public String trxnModi(HttpServletRequest req, Model model) {
+            System.out.println("Transaction Modi");
+            session=req.getSession(false);
+            try{
+
+                TrxnBean trxn = new TrxnBean();
+                getDropdownValues(model);
+                model.addAttribute("userForm", trxn);
+                
+                List<TrxnBean> trxnlist = new ArrayList<>();
+                trxnlist = trxnService.getTrxnList();
+                model.addAttribute("trxnlist", trxnlist);
+                
+                //model.addAttribute("msg", "User add page");
+                System.out.println("Transaction modified");
+            }catch(Exception e){
+                e.printStackTrace();
+                System.out.println("log write testingg.......");
+                //LogFileCreator.writeErrorToLog(e);
+            }
+
+            return "pages/user/trxnEdit.jsp";
+            
+    }
+    
     @RequestMapping(value = "/trxnSubmit", method = RequestMethod.POST)
     public String trxnSubmit(@ModelAttribute("userForm") @Validated TrxnBean trxnBean,
             BindingResult result, Model model) {
